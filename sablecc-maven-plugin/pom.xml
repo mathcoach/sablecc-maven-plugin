@@ -4,29 +4,16 @@
     <parent>
         <groupId>io.github.mathcoach</groupId>
         <artifactId>sablecc-maven-plugin-metapom</artifactId>
-        <version>1.1.0-SNAPSHOT</version>
+        <version>1.1.0</version>
     </parent>
 
     <artifactId>sablecc-maven-plugin</artifactId>
 
     <name>sablecc-maven-plugin</name>
-    <description>
-        Plugin to call SableCC
-    </description>
+    
     <url>https://mathcoach.htwsaar.de/mathcoach</url>
 
     <packaging>maven-plugin</packaging>
-
-    <developers>
-        <developer>
-            <name>Hong Phuc Bui</name>
-            <email>hong-phuc.bui@htwsaar.de</email>
-            <roles>
-                <role>owner,developer</role>
-            </roles>
-        </developer>
-    </developers>
-
     <licenses>
         <license>
             <name>The BSD 3-Clause License</name>
@@ -91,6 +78,35 @@
                     <argLine>${argLine} -Xmx2048m</argLine>
                 </configuration>
             </plugin>
+            
+            
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>                
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar-no-fork</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>                
+                <configuration>
+                    <doclint>none</doclint>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
 
@@ -120,19 +136,13 @@
             <artifactId>maven-plugin-api</artifactId>
             <version>3.9.11</version>
             <type>jar</type>
+            <scope>provided</scope>
         </dependency>
 
         <dependency>
             <groupId>org.apache.maven</groupId>
             <artifactId>maven-project</artifactId>
             <version>2.2.1</version>
-        </dependency>
-
-        <dependency>
-            <groupId>io.github.mathcoach</groupId>
-            <artifactId>sablecc</artifactId>
-            <version>3.7</version>
-            <type>jar</type>
             <scope>provided</scope>
         </dependency>
 

@@ -8,9 +8,39 @@
 
     <groupId>io.github.mathcoach</groupId>
     <artifactId>sablecc-maven-plugin-metapom</artifactId>
-    <version>1.1.0-SNAPSHOT</version>
+    <version>1.1.0</version>
     <name>sablecc-maven-plugin-metapom</name>
     <packaging>pom</packaging>
+
+
+    <description>
+        SableCC Maven Plugin
+    </description>
+    <url>https://github.com/mathcoach</url>
+    <licenses>
+        <license>
+            <name>GNU Lesser General Public</name>
+            <distribution>repo</distribution>
+        </license>
+
+        <license>
+            <name>The BSD 3-Clause License (For this pom.xml)</name>
+            <url>http://opensource.org/licenses/BSD-3-Clause</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+    <scm>
+        <url>https://github.com/mathcoach</url>
+    </scm>
+    <developers>
+        <developer>
+            <name>Hong Phuc Bui</name>
+            <email>hong-phuc.bui@htwsaar.de</email>
+            <roles>
+                <role>owner,developer</role>
+            </roles>
+        </developer>
+    </developers>
 
     <modules>
         <module>sablecc-maven-api</module>
@@ -24,18 +54,7 @@
         <maven.compiler.release>21</maven.compiler.release>
     </properties>
 
-    <distributionManagement>
-        <repository>
-            <id>central</id>
-            <name>bayes-releases</name>
-            <url>https://bayes.htwsaar.de/nexus/repository/maven-releases</url>
-        </repository>
-        <snapshotRepository>
-            <id>snapshots</id>
-            <name>bayes-snapshots</name>
-            <url>https://bayes.htwsaar.de/nexus/repository/maven-snapshots</url>
-        </snapshotRepository>
-    </distributionManagement>
+    
     <build>
         <pluginManagement>
             <plugins>
@@ -57,6 +76,16 @@
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-failsafe-plugin</artifactId>
                     <version>2.22.2</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-source-plugin</artifactId>
+                    <version>3.2.1</version>                    
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-javadoc-plugin</artifactId>
+                    <version>3.4.0</version>                    
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
