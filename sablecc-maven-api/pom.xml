@@ -65,7 +65,7 @@
         <dependency>
             <groupId>io.github.mathcoach</groupId>
             <artifactId>sablecc-java21</artifactId>
-            <version>3.7-SNAPSHOT</version>
+            <version>3.7</version>
             <type>jar</type>
             <scope>provided</scope>
         </dependency>
