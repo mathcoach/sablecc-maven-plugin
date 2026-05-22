@@ -1,51 +1,20 @@
 package de.htwsaar.mathcoach.scc;
 
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 import java.io.PushbackReader;
 import java.io.StringReader;
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
 import mysqlgrm.lexer.Lexer;
 import mysqlgrm.parser.Parser;
 
-/**
- * Unit test for simple App.
- */
-public class AppTest 
-    extends TestCase
-{
-    /**
-     * Create the test case
-     *
-     * @param testName name of the test case
-     */
-    public AppTest( String testName )
-    {
-        super( testName );
-    }
+public class AppTest {
 
-    /**
-     * @return the suite of tests being tested
-     */
-    public static Test suite()
-    {
-        return new TestSuite( AppTest.class );
-    }
+    @Test
+    void testMySQLParser() {
 
-    /**
-     * Rigourous Test :-)
-     */
-    public void testApp()
-    {
-        assertTrue( true );
+        assertDoesNotThrow(() -> {
+            Parser p = new Parser(new Lexer(new PushbackReader(new StringReader("truncate table xxx;"))));
+            p.parse();
+        }, "Es wurde keine Exception erwartet beim Parsen des TRUNCATE-Statements.");
     }
-
-	public void testMySQLParser() {
-		try {
-			mysqlgrm.parser.Parser p = new Parser(new Lexer(new PushbackReader(new StringReader("truncate table xxx;"))));
-			p.parse();
-		} catch (Exception ex){
-			fail("Not expected any exceptions.");
-		}
-	}
 }

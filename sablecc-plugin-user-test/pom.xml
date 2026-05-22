@@ -5,7 +5,7 @@
     <parent>
         <groupId>io.github.mathcoach</groupId>
         <artifactId>sablecc-maven-plugin-metapom</artifactId>
-        <version>1.1.1-SNAPSHOT</version>
+        <version>1.1.1</version>
     </parent>
 
 
@@ -27,7 +27,7 @@
             <plugin>
                 <groupId>io.github.mathcoach</groupId>
                 <artifactId>sablecc-maven-plugin</artifactId>
-                <version>1.1.1-SNAPSHOT</version>
+                <version>1.1.1</version>
                 <configuration>
                     <!-- =======================================================
                         the grammar file
@@ -182,9 +182,13 @@
 
     <dependencies>
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.11</version>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
             <scope>test</scope>
         </dependency>
     </dependencies>
