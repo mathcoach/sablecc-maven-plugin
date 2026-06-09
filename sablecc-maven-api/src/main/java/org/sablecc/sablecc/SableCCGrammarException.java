@@ -11,12 +11,16 @@ import org.sablecc.sablecc.parser.ParserException;
  */
 public final class SableCCGrammarException extends SableCCApiException {
 
+    private final String message;
+
     public SableCCGrammarException(ParserException cause) {
         super(cause);
+        message = null;
     }
 
     public SableCCGrammarException(LexerException cause) {
         super(cause);
+        message = null;
     }
 
     /**
@@ -25,6 +29,17 @@ public final class SableCCGrammarException extends SableCCApiException {
      */
     SableCCGrammarException(RuntimeException cause) {
         super(cause);
+        String m = cause.getMessage();
+        if (m != null ){
+            message = "\n" + m;
+        }else {
+            message = null;
+        }
     }
-
+    
+    @Override
+    public String getMessage() {
+        if(message != null) return message;
+        else return super.getMessage();
+    }
 }

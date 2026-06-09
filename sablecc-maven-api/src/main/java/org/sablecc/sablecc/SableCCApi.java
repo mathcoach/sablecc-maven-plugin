@@ -35,7 +35,7 @@ public final class SableCCApi {
      * @param processInlining
      * @param prettyPrinting
      */
-    public SableCCApi(boolean processInlining, boolean prettyPrinting) {
+    public SableCCApi(boolean processInlining, boolean prettyPrinting) {        
         this.processInlining = processInlining;
         this.prettyPrinting = prettyPrinting;
         this.inliningMaxAlts = SableCC.inliningMaxAlts;
@@ -95,6 +95,8 @@ public final class SableCCApi {
             throw new SableCCGrammarException(ex);
         } catch (ParserException ex) {
             throw new SableCCGrammarException(ex);
+        } catch(RuntimeException ex) {            
+            throw new SableCCGrammarException(ex);
         } finally {
             SableCC.inliningMaxAlts = originInlineMaxAlts;
             System.setOut(originOut);
@@ -113,9 +115,10 @@ public final class SableCCApi {
      * @param destination the destination directory, must exists. This method
      * does not check if the destination directory exits.
      *
-     */
+     */    
     public void processGrammar(File grammarFile, File destination) {
-
+        processGrammar(grammarFile, destination, System.out);
+        /*
         final int originInlineMaxAlts = SableCC.inliningMaxAlts;
         try {
             SableCC.inliningMaxAlts = inliningMaxAlts;
@@ -126,9 +129,12 @@ public final class SableCCApi {
             throw new SableCCGrammarException(ex);
         } catch (ParserException ex) {
             throw new SableCCGrammarException(ex);
+        } catch(RuntimeException ex) {            
+            throw new SableCCGrammarException(ex);
         } finally {
             SableCC.inliningMaxAlts = originInlineMaxAlts;
         }
+        */
     }
 
     private void genrateGrammar(File in, File dir) throws IOException, ParserException, LexerException {
