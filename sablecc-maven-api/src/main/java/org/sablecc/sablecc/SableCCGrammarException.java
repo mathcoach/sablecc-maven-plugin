@@ -15,12 +15,12 @@ public final class SableCCGrammarException extends SableCCApiException {
 
     public SableCCGrammarException(ParserException cause) {
         super(cause);
-        message = null;
+        message = prepareErrorMsg(cause);
     }
 
     public SableCCGrammarException(LexerException cause) {
         super(cause);
-        message = null;
+        message = prepareErrorMsg(cause);
     }
 
     /**
@@ -29,17 +29,21 @@ public final class SableCCGrammarException extends SableCCApiException {
      */
     SableCCGrammarException(RuntimeException cause) {
         super(cause);
-        String m = cause.getMessage();
-        if (m != null ){
-            message = "\n" + m;
-        }else {
-            message = null;
-        }
+        message = prepareErrorMsg(cause);
     }
     
     @Override
     public String getMessage() {
         if(message != null) return message;
         else return super.getMessage();
+    }
+    
+    private static String prepareErrorMsg(Exception cause) {
+        String m = cause.getMessage();
+        if (m != null ){
+            return "\n" + m;
+        }else {
+            return null;
+        }
     }
 }

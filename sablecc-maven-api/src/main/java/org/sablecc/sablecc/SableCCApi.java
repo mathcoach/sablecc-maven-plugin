@@ -117,24 +117,7 @@ public final class SableCCApi {
      *
      */    
     public void processGrammar(File grammarFile, File destination) {
-        processGrammar(grammarFile, destination, System.out);
-        /*
-        final int originInlineMaxAlts = SableCC.inliningMaxAlts;
-        try {
-            SableCC.inliningMaxAlts = inliningMaxAlts;
-            genrateGrammar(grammarFile, destination);
-        } catch (IOException ex) {
-            throw new SableCCIOException(ex);
-        } catch (LexerException ex) {
-            throw new SableCCGrammarException(ex);
-        } catch (ParserException ex) {
-            throw new SableCCGrammarException(ex);
-        } catch(RuntimeException ex) {            
-            throw new SableCCGrammarException(ex);
-        } finally {
-            SableCC.inliningMaxAlts = originInlineMaxAlts;
-        }
-        */
+        processGrammar(grammarFile, destination, System.out);        
     }
 
     private void genrateGrammar(File in, File dir) throws IOException, ParserException, LexerException {

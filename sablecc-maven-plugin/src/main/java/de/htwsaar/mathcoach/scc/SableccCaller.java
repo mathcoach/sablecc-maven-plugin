@@ -86,9 +86,10 @@ public final class SableccCaller extends AbstractMojo {
 
             updateProjectFiles(project, validedDirPath);
         } catch (SableCCApiException ex) {
-            getLog().error("Cannot compile the file " + grammar);
-            getLog().error(ex.getMessage());
-            throw new MojoFailureException("Cannot compile the file " + grammar, ex);
+            final String msg = "Cannot compile the file `" + grammar + "`";
+            getLog().error(msg);
+            getLog().error(ex.getMessage().trim());            
+            throw new MojoFailureException(msg, ex);
         }
 
     }
